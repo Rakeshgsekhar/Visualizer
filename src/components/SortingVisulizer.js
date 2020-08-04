@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./Visualizer.css";
+// import "./Visualizer.css";
 
 const SortingVisulizer = () => {
   useEffect(() => {
