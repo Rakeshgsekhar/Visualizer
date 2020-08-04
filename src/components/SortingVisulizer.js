@@ -8,17 +8,12 @@ const SortingVisulizer = () => {
       resetArray();
     }
   });
-  const ANIMATION_SPEED_MS = 1;
-
-  // Change this value for the number of bars (value) in the array.
-  const NUMBER_OF_ARRAY_BARS = 310;
-
-  // This is the main color of the array bars.
   const PRIMARY_COLOR = "turquoise";
 
   // This is the color of array bars that are being compared throughout the animations.
   const SECONDARY_COLOR = "red";
   const [array, setarray] = useState([]);
+  const [animSpeed, setAnimSpeed] = useState(1);
 
   const resetArray = () => {
     let arr = [];
@@ -46,13 +41,13 @@ const SortingVisulizer = () => {
         setTimeout(() => {
           barOneStyle.backgroundColor = color;
           barTwoStyle.backgroundColor = color;
-        }, i * ANIMATION_SPEED_MS);
+        }, i * animSpeed);
       } else {
         setTimeout(() => {
           const [barOneIdx, newHeight] = animations[i];
           const barOneStyle = arrayBars[barOneIdx].style;
           barOneStyle.height = `${newHeight}px`;
-        }, i * ANIMATION_SPEED_MS);
+        }, i * animSpeed);
       }
     }
   };
@@ -66,7 +61,7 @@ const SortingVisulizer = () => {
           style={{ height: `${value}px` }}
         ></div>
       ))}
-      <div>
+      <div className="btn-cls">
         <button className="btn" onClick={resetArray}>
           Generate New Array
         </button>

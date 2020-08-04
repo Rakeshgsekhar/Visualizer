@@ -1,6 +1,7 @@
 .array-container {
-  position: absolute;
-  left: 100px;
+  position: fixed;
+  left: 39%;
+  bottom: 100px;
   /* top: 100px; */
 }
 
@@ -10,8 +11,14 @@
   margin: 0 1px;
   background-color: aqua;
 }
-
-.btn {
+.btn-cls {
   position: fixed;
   bottom: 50px;
+  display: flex;
+  justify-content: end;
+}
+.btn {
+  /* position: fixed; */
+  bottom: 50px;
+  margin: 10px;
 }
