@@ -75,26 +75,39 @@ const doMerge = (
 export const insertionSortAnimation = (array) => {
   const animations = [];
   const colorChange = [];
+  const anims = [];
   let aux = [...array];
   console.log(aux);
   let i = 1,
     j = 0;
   while (i < aux.length) {
     j = i - 1;
-    colorChange.push([i, j]);
+    colorChange.push([j, i]);
+    colorChange.push([j, i]);
+    anims.push([j, i]);
+    anims.push([j, i]);
     let temp = aux[i];
     while (j >= 0 && aux[j] > temp) {
-      colorChange.push([j, j + 1]);
-      animations.push([j, aux[j + 1]]);
-      animations.push([i, aux[j]]);
+      colorChange.push([j + 1, j]);
+      colorChange.push([j + 1, j]);
+      // animations.push([j, aux[j + 1]]);
+      animations.push([j + 1, aux[j]]);
+      anims.push([j + 1, j]);
+      anims.push([j + 1, j]);
+      // animations.push([j, aux[j + 1]]);
+      anims.push([j + 1, aux[j]]);
       aux[j + 1] = aux[j];
       j--;
     }
+    colorChange.push([j + 1, i]);
+    animations.push([j + 1, temp]);
+    anims.push([j + 1, i]);
+    anims.push([j + 1, temp]);
     aux[j + 1] = temp;
     i++;
     console.log(aux);
   }
   console.log(aux);
-  const anims = { colorChange, animations };
+  const anim = [...colorChange, ...animations];
   return anims;
 };
