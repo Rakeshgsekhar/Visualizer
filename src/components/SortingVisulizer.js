@@ -69,7 +69,7 @@ const SortingVisulizer = () => {
 
   const insertionSort = () => {
     const anims = insertionSortAnimation(array);
-
+    /** insertion animation better apporch */
     // const { animations, colorChange } = anims;
     // console.log(animations);
     // for (
@@ -97,6 +97,8 @@ const SortingVisulizer = () => {
     //   }, i * animSpeed);
     //   // }
     // }
+
+    /** insertion animation apporch having a bug */
     const arrayBars = document.getElementsByClassName("array-bar");
     for (let i = 0; i < anims.length; i++) {
       // const isColorChange = i % 3 !== 2;
