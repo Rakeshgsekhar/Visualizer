@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 // import "./Visualizer.css";
-import { getMergeSortAnimations } from "../helper/sortingAlgorithms";
+import {
+  getMergeSortAnimations,
+  insertionSortAnimation,
+} from "../helper/sortingAlgorithms";
 
 const SortingVisulizer = () => {
   useEffect(() => {
@@ -51,7 +54,45 @@ const SortingVisulizer = () => {
       }
     }
   };
+  /** */
+  const createSmallerArray = () => {
+    let arr = [];
+    for (let i = 0; i < 10; i++) {
+      arr.push(randomInValues(0, 650));
+    }
+    console.log(arr);
+    setarray(arr);
+  };
 
+  const insertionSort = () => {
+    const anims = insertionSortAnimation(array);
+    console.log(animations);
+    const animations = anims.colorChange;
+
+    for (let i = 0; i < animations.length; i++) {
+      const arrayBars = document.getElementsByClassName("array-bar");
+      const isColorChange = i % 3 !== 2;
+      // if (isColorChange) {
+      const [barOneIdx, barTwoIdx] = animations[i];
+      const barOneStyle = arrayBars[barOneIdx].style;
+      const barTwoStyle = arrayBars[barTwoIdx].style;
+      const color = i % 3 === 0 ? SECONDARY_COLOR : PRIMARY_COLOR;
+      setTimeout(() => {
+        barOneStyle.backgroundColor = color;
+        barTwoStyle.backgroundColor = color;
+      }, i * animSpeed);
+      // }
+      //else {
+      // setTimeout(() => {
+      //   const [barOneIdx, newHeight] = animations[i];
+      //   console.log(barOneIdx);
+      //   const barOneStyle = arrayBars[barOneIdx].style;
+      //   barOneStyle.height = `${newHeight}px`;
+      // }, i * animSpeed);
+      // }
+    }
+  };
+  /** */
   return (
     <div className="array-container">
       {array.map((value, index) => (
@@ -62,10 +103,10 @@ const SortingVisulizer = () => {
         ></div>
       ))}
       <div className="btn-cls">
-        <button className="btn" onClick={resetArray}>
+        <button className="btn" onClick={createSmallerArray}>
           Generate New Array
         </button>
-        <button className="btn" onClick={mergeSort}>
+        <button className="btn" onClick={insertionSort}>
           Merge Sort
         </button>
       </div>
