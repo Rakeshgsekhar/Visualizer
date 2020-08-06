@@ -108,6 +108,6 @@ export const insertionSortAnimation = (array) => {
     console.log(aux);
   }
   console.log(aux);
-  const anim = [...colorChange, ...animations];
-  return anims;
+  const anim = { colorChange, animations };
+  return anims; //anims
 };

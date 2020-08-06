@@ -22,7 +22,7 @@ const SortingVisulizer = () => {
 
   const resetArray = () => {
     let arr = [];
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 50; i++) {
       arr.push(randomInValues(0, 650));
     }
     setarray(arr);
@@ -107,7 +107,7 @@ const SortingVisulizer = () => {
       if (array.indexOf(barTwoIdx) === -1) {
         const barOneStyle = arrayBars[barOneIdx].style;
         const barTwoStyle = arrayBars[barTwoIdx].style;
-        const color = i % 5 === 0 ? SECONDARY_COLOR : PRIMARY_COLOR;
+        const color = i % 5 === 0 ? INSERTION_COLOR : PRIMARY_COLOR;
         setTimeout(() => {
           barOneStyle.backgroundColor = color;
           barTwoStyle.backgroundColor = color;
@@ -115,7 +115,7 @@ const SortingVisulizer = () => {
       } else {
         setTimeout(() => {
           const [barOneIdx, newHeight] = anims[i];
-          console.log(newHeight);
+          // console.log(newHeight);
           const barOneStyle = arrayBars[barOneIdx].style;
           barOneStyle.height = `${newHeight}px`;
         }, i * animSpeed);
@@ -123,10 +123,10 @@ const SortingVisulizer = () => {
 
       // }
     }
-    arrayBars.forEach((element) => {
-      const barOneStyle = element.style;
-      barOneStyle.backgroundColor = PRIMARY_COLOR;
-    });
+    // arrayBars.forEach((element) => {
+    //   const barOneStyle = element.style;
+    //   barOneStyle.backgroundColor = INSERTION_COLOR;
+    // });
   };
   /** */
   return (
