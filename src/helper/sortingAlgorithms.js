@@ -111,3 +111,43 @@ export const insertionSortAnimation = (array) => {
   const anim = { colorChange, animations };
   return anims; //anims
 };
+
+export const quickSortAnimation = (array) => {
+  let left = 0;
+  let right = array.length;
+  let animations = [];
+  var pivot = array[Math.floor((right + left) / 2)],
+    i = left,
+    j = right;
+
+  while (i <= j) {
+    animations.push([i, i]);
+    animations.push([j, j]);
+    while (array[i] < pivot) {
+      animations.push([i, array[i]]);
+      i++;
+      animations.push([i, i]);
+    }
+
+    while (array[j] > pivot) {
+      animations.push([j, array[j]]);
+      j--;
+      animations.push([j, j]);
+    }
+
+    if (i <= j) {
+      // swap(array, i, j);
+      animations.push([i, i]);
+      animations.push([j, j]);
+      animations.push([i, array[j]]);
+      animations.push([j, array[j]]);
+      let temp = array[i];
+      array[i] = array[j];
+      array[j] = temp;
+      i++;
+      j--;
+    }
+  }
+  console.log(array);
+  return animations;
+};

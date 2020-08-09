@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import {
   getMergeSortAnimations,
   insertionSortAnimation,
+  quickSortAnimation,
 } from "../helper/sortingAlgorithms";
 
 const SortingVisulizer = () => {
@@ -129,6 +130,12 @@ const SortingVisulizer = () => {
     // });
   };
   /** */
+
+  const animateQuickSort = () => {
+    const animations = quickSortAnimation(array);
+    console.log(animations);
+  };
+
   return (
     <div className="array-container">
       {array.map((value, index) => (
@@ -150,6 +157,9 @@ const SortingVisulizer = () => {
         </button>
         <button className="btn" onClick={insertionSort}>
           Insertion Sort
+        </button>
+        <button className="btn" onClick={animateQuickSort}>
+          Quick Sort
         </button>
       </div>
     </div>
