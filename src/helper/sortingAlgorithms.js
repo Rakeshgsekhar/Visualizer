@@ -115,24 +115,26 @@ export const insertionSortAnimation = (array) => {
 export const quickSortAnimation = (array) => {
   let left = 0;
   let right = array.length;
+  console.log(right);
   let animations = [];
-  var pivot = array[Math.floor((right + left) / 2)],
+  let p = Math.floor(left + (right - left) / 2);
+  var pivot = array[p],
     i = left,
     j = right;
-
+  animations.push([pivot, pivot]);
   while (i <= j) {
     animations.push([i, i]);
     animations.push([j, j]);
     while (array[i] < pivot) {
-      animations.push([i, array[i]]);
-      i++;
+      // animations.push([i, array[i]]);
       animations.push([i, i]);
+      i++;
     }
 
     while (array[j] > pivot) {
-      animations.push([j, array[j]]);
-      j--;
+      // animations.push([j, array[j]]);
       animations.push([j, j]);
+      j--;
     }
 
     if (i <= j) {
@@ -140,7 +142,9 @@ export const quickSortAnimation = (array) => {
       animations.push([i, i]);
       animations.push([j, j]);
       animations.push([i, array[j]]);
-      animations.push([j, array[j]]);
+      animations.push([i, i]);
+      animations.push([j, array[i]]);
+      animations.push([j, j]);
       let temp = array[i];
       array[i] = array[j];
       array[j] = temp;
